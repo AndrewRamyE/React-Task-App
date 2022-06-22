@@ -9,7 +9,7 @@ const connection = require('./db')
 connection();
 
 
-// var indexRouter = require('./routes/index');
+var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user/auth');
 var taskRouter = require('./routes/user/task');
 var app = express();
@@ -26,7 +26,7 @@ if(process.env.NODE_ENV === 'production'){
   }else{
     app.use(express.static(path.join(__dirname, 'public')));
   }
-// app.use('/', indexRouter);
+app.use('/api', indexRouter);
 app.use('/api/user', userRouter);
 app.use('/api/task', taskRouter);
 
