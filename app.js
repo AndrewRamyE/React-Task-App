@@ -22,7 +22,7 @@ app.use(cookieParser());
 
 app.use(cors());
 if(process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname, 'frontend')));
+    app.use(express.static(path.join(__dirname, 'frontend/build')));
   }else{
     app.use(express.static(path.join(__dirname, 'public')));
   }
