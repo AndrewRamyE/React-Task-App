@@ -27,7 +27,7 @@ const Task = require('../../models/task');
     try {
         const task = await Task.findOne({ _id, owner: req.user._id })
         if (!task) {
-            return res.status(404).send()
+            return res.status(400).send()
         }
         res.send(task)
     } catch (e) {
@@ -49,7 +49,7 @@ const Task = require('../../models/task');
         const task = await Task.findOne({ _id: req.params.id, owner: req.user._id })
 
         if (!task) {
-            return res.status(404).send()
+            return res.status(400).send()
         }
 
         updates.forEach((update) => task[update] = req.body[update])
@@ -63,7 +63,7 @@ const Task = require('../../models/task');
     try {
         const task = await Task.findOneAndDelete({ _id: req.params.id, owner: req.user._id })
         if (!task) {
-            return res.status(404).send()
+            return res.status(400).send()
         }
         res.send(task)
     } catch (e) {

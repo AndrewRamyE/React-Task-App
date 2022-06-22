@@ -56,7 +56,6 @@ function Tasks() {
                 reset();
             })
             .catch(function (error) {
-                console.log(error.response.data.errors);
                 setErrors();
                 let obj = {};
                 for (const singleError in error.response.data.errors) {
