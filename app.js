@@ -9,7 +9,7 @@ const connection = require('./db')
 connection();
 
 
-var indexRouter = require('./routes/index');
+// var indexRouter = require('./routes/index');
 var userRouter = require('./routes/user/auth');
 var taskRouter = require('./routes/user/task');
 var app = express();
@@ -23,8 +23,10 @@ app.use(cookieParser());
 app.use(cors());
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(__dirname, 'frontend')));
+  }else{
+    app.use(express.static(path.join(__dirname, 'public')));
   }
-app.use('/', indexRouter);
+// app.use('/', indexRouter);
 app.use('/user', userRouter);
 app.use('/task', taskRouter);
 
