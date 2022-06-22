@@ -10,7 +10,7 @@ function Header() {
         'Authorization': 'Bearer '+token
       }
     const logout = async ()=>{
-        await axios.post(`/api/user/logout`,{headers})
+        await axios.get(`/api/user/logout`,{headers})
             .then(function () {
                 localStorage.removeItem('token');
                 navigate('/');

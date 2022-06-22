@@ -135,13 +135,13 @@ function Tasks() {
                                     <input name='title'  {...register("title")}
                                     type="text" className="form-control todo-list-input" placeholder="What do you need to do today?"/> 
                                     </div>
-                                     {errors && errors.title && <p className="red col-12">{errors.title}</p>}
+                                     {errors && errors.title && <div className='row'><div className='col-3'></div><div class="red d-block col-9">{errors.title}</div></div>}
                                     <div className="add-items d-flex "> 
                                     <label className='col-3'>Description</label>
                                     <input  name='description' {...register("description")}
                                     type="text" className="form-control todo-list-input col-9" placeholder="What do you need to do today?"/> 
                                     </div>
-                                    {errors && errors.description && <p className="red" >{errors.description}</p>}
+                                    {errors && errors.description && <div className='row'><div className='col-3'></div><div class="red d-block col-9">{errors.description}</div></div>}
                                     <div className="add-items d-flex"> 
                                         <label className='col-3'>priority</label>
                                         <select name='priority' {...register("priority")}
@@ -152,7 +152,7 @@ function Tasks() {
                                             <option value="Low">Low</option>
                                         </select>
                                     </div>
-                                        {errors && errors.priority && <p className="red">{errors.priority}</p>}
+                                        {errors && errors.priority && <div className='row'><div className='col-3'></div><div class="red d-block col-9">{errors.priority}</div></div>}
                                     <div className="add-items d-flex"> 
                                     <label className='col-3'>status</label>
                                     <select name='status' {...register("status")}
@@ -165,19 +165,19 @@ function Tasks() {
                                             <option value="Completed">Completed</option>
                                         </select>
                                     </div>
-                                        {errors && errors.status && <p className="red">{errors.status}</p>}
+                                        {errors && errors.status && <div className='row'><div className='col-3'></div><div class="red d-block col-9">{errors.status}</div></div>}
                                     <div className="add-items d-flex"> 
                                     <label className='col-3'>Start Date</label>
                                     <input name='startDate' {...register("startDate")}
                                     type="date" className="form-control todo-list-input"/> 
                                     </div>
-                                     {errors && errors.startDate && <p className="red">{errors.startDate}</p>}
+                                     {errors && errors.startDate && <div className='row'><div className='col-3'></div><div class="red d-block col-9">{errors.startDate}</div></div>}
                                     <div className="add-items d-flex"> 
                                     <label className='col-3'>End Date</label>
                                     <input name='endDate' {...register("endDate")}
                                     type="date" className="form-control todo-list-input"/> 
                                     </div>
-                                     {errors && errors.endDate && <p className="red">{errors.endDate}</p>}
+                                     {errors && errors.endDate && <div className='row'><div className='col-3'></div><div class="red d-block col-9">{errors.endDate}</div></div>}
                                     {editMode}
                                     {
                                         !editMode ? 
@@ -200,7 +200,7 @@ function Tasks() {
                                             return (a.createdAt > b.createdAt)? 1 : -1 ;
                                         }).map(task=>{
                                             return(
-                                                <div key={task._id} className="col-md-4 col-sm-6 content-card">
+                                                <div key={task._id} className="col-lg-4 col-md-6 content-card">
                                                     <div className="card-big-shadow">
                                                         <div className="card card-just-text" data-background="color" data-color="blue" data-radius="none">
                                                             <div className="content">

@@ -8,7 +8,7 @@
     "install-client":"cd frontend && npm install",
     "heroku-postbuild" :"npm run install-client && npm run build",
     "client": "cd frontend && npm start",
-    "dev": "nodemon ./bin/www && npm run client"
+    "dev": "nodemon ./bin/www"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
