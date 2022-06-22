@@ -1,7 +1,8 @@
-import {Link} from 'react-router-dom'
+import {Link , useNavigate} from 'react-router-dom'
 import axios from "axios";
 
 function Header() {
+    let navigate = useNavigate();
     let token = localStorage.getItem('token');
     let headers ={
         'X-Requested-With': 'XMLHttpRequest',
@@ -12,9 +13,11 @@ function Header() {
         await axios.post(`/api/user/logout`,{headers})
             .then(function () {
                 localStorage.removeItem('token');
+                navigate('/');
             })
             .catch(function (error) {
-                console.log(error);
+                localStorage.removeItem('token');
+                navigate('/');
                 }); 
     }
   return (
@@ -41,7 +44,7 @@ function Header() {
       </ul>
 
       <div className="d-flex align-items-center">
-        <button onClick={logout} type="button" className="btn btn-link px-3 me-2">
+        <button onClick={()=>logout()} type="button" className="btn btn-link px-3 me-2">
           Logout
         </button>
       </div>

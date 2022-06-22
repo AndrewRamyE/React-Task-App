@@ -100,7 +100,7 @@ function AuthPage() {
                                     </div>
                                     <div className="group">
                                         <input type="submit" className="button" value="Sign In" />
-                                        {errors.login && <p className="red">{errors.login}</p>}
+                                        {errors && errors.login && <p className="red">{errors.login}</p>}
                                     </div>
                                     <div className="hr"></div>
                                 </form>
@@ -116,7 +116,7 @@ function AuthPage() {
                                     <div className="group">
                                         <label htmlFor="passwordconf" className="label">Repeat Password</label>
                                         <input id="passwordconf" type="password" className="input" data-type="password" value={signinPasswordconf} onChange={e=>setSigninPasswordconf(e.target.value)} />
-                                        {errors.signinPasswordconf && <p className="red">{errors.signinPasswordconf}</p>}
+                                        {errors && errors.signinPasswordconf && <p className="red">{errors.signinPasswordconf}</p>}
                                     </div>
                                     <div className="group">
                                         <label htmlFor="email" className="label">Email Address</label>
@@ -124,7 +124,7 @@ function AuthPage() {
                                     </div>
                                     <div className="group">
                                         <input type="submit" className="button" value="Sign Up" />
-                                        {errors.signin && <p className="red">{errors.signin}</p>}
+                                        {errors && errors.signin && <p className="red">{errors.signin}</p>}
                                     </div>
                                 </form>
                             </div>
