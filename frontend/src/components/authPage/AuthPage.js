@@ -31,7 +31,6 @@ function AuthPage() {
             // await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/checkauth`,{headers})
             await axios.get(`/api/user/checkauth`,{headers})
                 .then(function ({data}) {
-                    console.log(data);
                     navigate('/task');
                 }).catch(e=>console.log(e));
         }
@@ -55,11 +54,11 @@ function AuthPage() {
                 localStorage.setItem('token',data.token);
                 navigate('/task');
             }else {
-                // setErrors({'login':'Credentials not matches'}) ;
+                setErrors({'signin':'not match'}) ;
             }
            })
         .catch(function (error) {
-            // setErrors({'login':'Credentials not matches'}) ;
+            setErrors({'signin':'not match'}) ;
         });
       }
     const login = async (e)=>{
@@ -125,6 +124,7 @@ function AuthPage() {
                                     </div>
                                     <div className="group">
                                         <input type="submit" className="button" value="Sign Up" />
+                                        {errors.signin && <p className="red">{errors.signin}</p>}
                                     </div>
                                 </form>
                             </div>

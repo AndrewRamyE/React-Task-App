@@ -86,7 +86,7 @@ function Tasks() {
     }
     const editTask = async(data)=>{
         // await axios.patch(`${process.env.REACT_APP_BASE_URL}/api/task/edit/${editId}`,data ,{headers})
-        await axios.patch(`/task/edit/${editId}`,data ,{headers})
+        await axios.patch(`/api/task/edit/${editId}`,data ,{headers})
             .then(function ({data}) {
                 setTask(currentArray => {
                     currentArray = currentArray.filter((e)=>{
@@ -102,7 +102,7 @@ function Tasks() {
     const deletTask =async (id)=>{
         let deleteRequest = ()=>{
             //  axios.delete(`${process.env.REACT_APP_BASE_URL}/api/task/delete/${id}` ,{headers})
-             axios.delete(`/task/delete/${id}` ,{headers})
+             axios.delete(`/api/task/delete/${id}` ,{headers})
             .then(function () {
                 setTask(currentArray => {
                     currentArray = currentArray.filter((e)=>{
