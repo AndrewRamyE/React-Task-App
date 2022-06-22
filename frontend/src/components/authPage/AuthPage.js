@@ -28,7 +28,6 @@ function AuthPage() {
     useEffect(()=>{
         console.log(token);
         let check = async ()=>{
-            // await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/checkauth`,{headers})
             await axios.get(`/api/user/checkauth`,{headers})
                 .then(function ({data}) {
                     navigate('/task');
@@ -38,6 +37,7 @@ function AuthPage() {
     },[navigate]);
       const signin = async (e)=>{
         e.preventDefault();
+        setErrors() ;
         if(signinPassword !== signinPasswordconf) {
             return setErrors({'signinPasswordconf':'Password and confirm password must be the same'}) ;
         }
@@ -46,9 +46,9 @@ function AuthPage() {
           'email':signinEmail,
           'password':signinPassword
         }
-        // await axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/signin`,data,{headers})
         await axios.post(`/api/user/signin`,data,{headers})
         .then(function ({data}) {
+            console.log(data);
             if (data.status === 200) {
                 data = JSON.parse(data.data);
                 localStorage.setItem('token',data.token);
@@ -63,11 +63,11 @@ function AuthPage() {
       }
     const login = async (e)=>{
         e.preventDefault();
+        setErrors() ;
         let data = {
             'email':loginEmail,
           'password':loginPassword
         }
-        //   await axios.post(`${process.env.REACT_APP_BASE_URL}/apiuser/login`,data,{headers})
           await axios.post(`/api/user/login`,data,{headers})
           .then(function ({data}) {
             if (data.status === 200) {

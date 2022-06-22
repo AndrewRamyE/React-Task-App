@@ -6,6 +6,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import axios from "axios";
 import '../../css/taskPage.css';
 import { AiFillEdit ,AiOutlineDelete } from "react-icons/ai";
+import Header from '../Header';
 
 function Tasks() {
     const { register, handleSubmit ,reset ,setValue } = useForm({
@@ -31,13 +32,11 @@ function Tasks() {
       }
     useEffect(()=>{
         let check = async ()=>{
-            // await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/checkauth`,{headers})
             await axios.get(`/api/user/checkauth`,{headers})
                 .catch(function (error) {
                     console.log(error);
                     navigate('/');
                 });
-            // await axios.get(`${process.env.REACT_APP_BASE_URL}/api/task`,{headers})
             await axios.get(`/api/task`,{headers})
             .then(function ({data}) {
                 setTask(data);
@@ -49,7 +48,6 @@ function Tasks() {
         check();
     },[navigate]);
     const addTask = async (data)=>{
-        // await axios.post(`${process.env.REACT_APP_BASE_URL}/api/task/create`,data ,{headers})
         await axios.post(`/api/task/create`,data ,{headers})
             .then(function ({data}) {
                 setTask(currentArray => [...currentArray, data]);
@@ -65,7 +63,6 @@ function Tasks() {
                 }); 
     }
     const updateTask = async(id)=>{
-        // await axios.get(`${process.env.REACT_APP_BASE_URL}/api/task/update/${id}` ,{headers})
         await axios.get(`/api/task/update/${id}` ,{headers})
             .then(function ({data}) {
                 setEditMode(true);
@@ -83,7 +80,6 @@ function Tasks() {
             }); 
     }
     const editTask = async(data)=>{
-        // await axios.patch(`${process.env.REACT_APP_BASE_URL}/api/task/edit/${editId}`,data ,{headers})
         await axios.patch(`/api/task/edit/${editId}`,data ,{headers})
             .then(function ({data}) {
                 setTask(currentArray => {
@@ -98,7 +94,6 @@ function Tasks() {
     }
     const deletTask =async (id)=>{
         let deleteRequest = ()=>{
-            //  axios.delete(`${process.env.REACT_APP_BASE_URL}/api/task/delete/${id}` ,{headers})
              axios.delete(`/api/task/delete/${id}` ,{headers})
             .then(function () {
                 setTask(currentArray => {
@@ -125,8 +120,10 @@ function Tasks() {
           });
     }
   return (
-        <div className="page-content page-container" id="page-content">
-            <div className="padding">
+    <>
+    <Header />
+    <div className="page-content page-container" id="page-content">
+            <div className="p-2">
                 <div className="row container d-flex justify-content-center">
                     <div className="col-md-12">
                         <div className="card px-3">
@@ -228,6 +225,8 @@ function Tasks() {
                 </div>
             </div>
         </div>
+    </>
+        
   )
 }
 

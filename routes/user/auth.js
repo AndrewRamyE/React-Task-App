@@ -25,9 +25,10 @@ router.post('/login',async (req,res)=>{
             const token = user.generateAuthToken();
             return token
         }).then((token) => {
+          const userdata = JSON.stringify({ user, token });
             res.send({'status'  : 200,
             'message' : 'Success',
-            'data'    : { user, token }})
+            'data'    : userdata})
         })
         .catch((e) => {
             if (e.name === "ValidationError") {
@@ -50,17 +51,17 @@ router.post('/login',async (req,res)=>{
   router.get('/checkauth',auth,async (req,res)=>{
     res.send('login');
   });
-  // router.post('/logout', auth, async(req, res) => {
+  router.post('/logout', auth, async(req, res) => {
 
-//   try {
-//       req.user.tokens = req.user.tokens.filter((token) => {
-//           return token.token !== req.token
-//       })
-//       await req.user.save();
-//       res.send();
-//   } catch (e) {
-//       res.status(404).send();
-//   }
-// })
+  try {
+      req.user.tokens = req.user.tokens.filter((token) => {
+          return token.token !== req.token
+      })
+      await req.user.save();
+      res.send();
+  } catch (e) {
+      res.status(404).send();
+  }
+})
 
 module.exports = router;
