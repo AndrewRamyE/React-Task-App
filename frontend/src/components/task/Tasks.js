@@ -80,7 +80,6 @@ function Tasks() {
                 element.scrollIntoView();
             })
             .catch(function (error) {
-                console.log(error);
             }); 
     }
     const editTask = async(data)=>{
@@ -95,7 +94,6 @@ function Tasks() {
                 reset(); setEditMode(false); setEditId(false);
             })
             .catch(function (error) {
-                console.log(error);
             }); 
     }
     const deletTask =async (id)=>{
@@ -110,7 +108,6 @@ function Tasks() {
                     return[...currentArray]});
             })
             .catch(function (error) {
-                console.log(error);
             }); 
         }
         confirmAlert({
