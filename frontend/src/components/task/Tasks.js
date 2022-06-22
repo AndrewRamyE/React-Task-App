@@ -31,14 +31,14 @@ function Tasks() {
       }
     useEffect(()=>{
         let check = async ()=>{
-            // await axios.get(`${process.env.REACT_APP_BASE_URL}/user/checkauth`,{headers})
-            await axios.get(`/user/checkauth`,{headers})
+            // await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/checkauth`,{headers})
+            await axios.get(`/api/user/checkauth`,{headers})
                 .catch(function (error) {
                     console.log(error);
                     navigate('/');
                 });
-            // await axios.get(`${process.env.REACT_APP_BASE_URL}/task`,{headers})
-            await axios.get(`/task`,{headers})
+            // await axios.get(`${process.env.REACT_APP_BASE_URL}/api/task`,{headers})
+            await axios.get(`/api/task`,{headers})
             .then(function ({data}) {
                 setTask(data);
             })
@@ -49,8 +49,8 @@ function Tasks() {
         check();
     },[navigate]);
     const addTask = async (data)=>{
-        // await axios.post(`${process.env.REACT_APP_BASE_URL}/task/create`,data ,{headers})
-        await axios.post(`/task/create`,data ,{headers})
+        // await axios.post(`${process.env.REACT_APP_BASE_URL}/api/task/create`,data ,{headers})
+        await axios.post(`/api/task/create`,data ,{headers})
             .then(function ({data}) {
                 setTask(currentArray => [...currentArray, data]);
                 reset();
@@ -66,8 +66,8 @@ function Tasks() {
                 }); 
     }
     const updateTask = async(id)=>{
-        // await axios.get(`${process.env.REACT_APP_BASE_URL}/task/update/${id}` ,{headers})
-        await axios.get(`/task/update/${id}` ,{headers})
+        // await axios.get(`${process.env.REACT_APP_BASE_URL}/api/task/update/${id}` ,{headers})
+        await axios.get(`/api/task/update/${id}` ,{headers})
             .then(function ({data}) {
                 setEditMode(true);
                 setEditId(id);
@@ -85,7 +85,7 @@ function Tasks() {
             }); 
     }
     const editTask = async(data)=>{
-        // await axios.patch(`${process.env.REACT_APP_BASE_URL}/task/edit/${editId}`,data ,{headers})
+        // await axios.patch(`${process.env.REACT_APP_BASE_URL}/api/task/edit/${editId}`,data ,{headers})
         await axios.patch(`/task/edit/${editId}`,data ,{headers})
             .then(function ({data}) {
                 setTask(currentArray => {
@@ -101,7 +101,7 @@ function Tasks() {
     }
     const deletTask =async (id)=>{
         let deleteRequest = ()=>{
-            //  axios.delete(`${process.env.REACT_APP_BASE_URL}/task/delete/${id}` ,{headers})
+            //  axios.delete(`${process.env.REACT_APP_BASE_URL}/api/task/delete/${id}` ,{headers})
              axios.delete(`/task/delete/${id}` ,{headers})
             .then(function () {
                 setTask(currentArray => {

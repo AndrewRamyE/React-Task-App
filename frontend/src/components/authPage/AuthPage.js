@@ -28,8 +28,8 @@ function AuthPage() {
     useEffect(()=>{
         console.log(token);
         let check = async ()=>{
-            // await axios.get(`${process.env.REACT_APP_BASE_URL}/user/checkauth`,{headers})
-            await axios.get(`/user/checkauth`,{headers})
+            // await axios.get(`${process.env.REACT_APP_BASE_URL}/api/user/checkauth`,{headers})
+            await axios.get(`/api/user/checkauth`,{headers})
                 .then(function ({data}) {
                     console.log(data);
                     navigate('/task');
@@ -47,8 +47,8 @@ function AuthPage() {
           'email':signinEmail,
           'password':signinPassword
         }
-        // await axios.post(`${process.env.REACT_APP_BASE_URL}/user/signin`,data,{headers})
-        await axios.post(`/user/signin`,data,{headers})
+        // await axios.post(`${process.env.REACT_APP_BASE_URL}/api/user/signin`,data,{headers})
+        await axios.post(`/api/user/signin`,data,{headers})
         .then(function ({data}) {
             if (data.status === 200) {
                 data = JSON.parse(data.data);
@@ -68,8 +68,8 @@ function AuthPage() {
             'email':loginEmail,
           'password':loginPassword
         }
-        //   await axios.post(`${process.env.REACT_APP_BASE_URL}/user/login`,data,{headers})
-          await axios.post(`/user/login`,data,{headers})
+        //   await axios.post(`${process.env.REACT_APP_BASE_URL}/apiuser/login`,data,{headers})
+          await axios.post(`/api/user/login`,data,{headers})
           .then(function ({data}) {
             if (data.status === 200) {
                 data = JSON.parse(data.data);

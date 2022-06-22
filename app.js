@@ -27,8 +27,8 @@ if(process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(__dirname, 'public')));
   }
 // app.use('/', indexRouter);
-app.use('/user', userRouter);
-app.use('/task', taskRouter);
+app.use('/api/user', userRouter);
+app.use('/api/task', taskRouter);
 
 // catch 404 and forward to error handler
 // app.use(function(req, res, next) {
