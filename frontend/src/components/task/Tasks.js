@@ -124,7 +124,7 @@ function Tasks() {
     <Header />
     <div className="page-content page-container" id="page-content">
             <div className="p-2">
-                <div className="row container d-flex justify-content-center">
+                <div className="row justify-content-center">
                     <div className="col-md-12">
                         <div className="card px-3">
                             <div className="card-body" onSubmit={addTask}>
@@ -139,14 +139,13 @@ function Tasks() {
                                     <div className="add-items d-flex "> 
                                     <label className='col-3'>Description</label>
                                     <input  name='description' {...register("description")}
-                                    type="text" className="form-control todo-list-input col-9" placeholder="What do you need to do today?"/> 
+                                    type="text" className="form-control todo-list-input col-9" placeholder="Description"/> 
                                     </div>
                                     {errors && errors.description && <div className='row'><div className='col-3'></div><div class="red d-block col-9">{errors.description}</div></div>}
                                     <div className="add-items d-flex"> 
                                         <label className='col-3'>priority</label>
                                         <select name='priority' {...register("priority")}
                                         className="form-select" aria-label="Default select example">
-                                            <option value=''>Open this select menu</option>
                                             <option value="High">High</option>
                                             <option value="Medium">Medium</option>
                                             <option value="Low">Low</option>
@@ -157,7 +156,6 @@ function Tasks() {
                                     <label className='col-3'>status</label>
                                     <select name='status' {...register("status")}
                                     className="form-select" aria-label="Default select example">
-                                            <option value=''>Open this select menu</option>
                                             <option value="TODO">TODO</option>
                                             <option value="IN progress">IN progress</option>
                                             <option value="review">review</option>
@@ -187,9 +185,7 @@ function Tasks() {
                                         ( <div className="add-items d-flex"><button type="submit" className="add btn btn-primary font-weight-bold todo-list-add-btn">edit</button> 
                                         <button onClick={()=>{reset(); setErrors(false); setEditMode(false); setEditId(false);}} type="button" className="add btn btn-primary font-weight-bold todo-list-add-btn">cancel</button></div> )
                                         
-                                    }
-                                        
-                                    
+                                    } 
                                 </form>
                                 <div className="list-wrapper">
                                 <h2>My Tasks</h2>

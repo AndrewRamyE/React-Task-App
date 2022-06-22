@@ -39,7 +39,7 @@ function Header() {
     <div className="collapse navbar-collapse" >
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
-          <Link className="nav-link" to="/">Home</Link>
+          <Link className="nav-link" to="/task">Home</Link>
         </li>
       </ul>
 
